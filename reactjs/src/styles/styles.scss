@@ -1,0 +1,9 @@
+// UTILS
+@use './utils/variables';
+@use './utils/mixins';
+
+// BASE
+@use './base/base';
+
+// PAGES
+@use "./pages/contactPage";
