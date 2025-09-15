@@ -59,7 +59,7 @@ export function App() {
                 <div className="visiteAvailability">
                     <h2>Disponibilités pour une visite</h2>
 
-                    <div>
+                    <div className="selectContainer">
                         <select name="availabilityDays" id="availabilityDays">
                             <option value="">Ex : Lundi</option>
                             {
@@ -88,14 +88,18 @@ export function App() {
                             })}
                         </select>
 
-                        <button>Ajouter dispo</button>
+                        <button className="addDispo">Ajouter</button>
                     </div>
 
                     <UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>
+                    <UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>
                 </div>
 
-                <button>Envoyer</button>
-
+                <button
+                    type="button"
+                    className="bg-fuchsia-900 submitContactForm">
+                    Envoyer
+                </button>
             </form>
         </div>
     )

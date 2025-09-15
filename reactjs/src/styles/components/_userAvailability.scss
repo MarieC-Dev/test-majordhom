@@ -1,0 +1,26 @@
+.userAvailability {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+  margin-bottom: .5rem;
+  background-color: lightgrey;
+  color: grey;
+  border-radius: 2rem;
+  font-size: 14px;
+
+  @media (max-width: 867px) {
+    margin: 0 auto .5rem auto;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 18px;
+      margin-left: 3rem;
+    }
+  }
+}

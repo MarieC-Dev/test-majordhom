@@ -17,6 +17,16 @@ body {
   background-color: white;
   color: #010101;
 }
+@media (max-width: 1248px) {
+  body {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    padding: 0 0.5rem;
+  }
+}
 
 a {
   color: inherit;
@@ -46,13 +56,52 @@ textarea {
   display: flex;
   flex-direction: column;
   padding: 1.5rem 3rem;
-  margin: 0 auto;
-  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/salon.png"), no-repeat, center;
+  margin: 2rem auto 0 auto;
+  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/salon.png"), no-repeat;
   background-size: cover;
+  background-position: center;
   color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0px 5px 6px -1px #BABABA;
+}
+@media (max-width: 1248px) {
+  .contactPage {
+    width: 100%;
+  }
+}
+@media (max-width: 867px) {
+  .contactPage {
+    padding: 2rem;
+  }
+}
+@media (max-width: 486px) {
+  .contactPage {
+    padding: 2rem 1rem;
+  }
 }
 .contactPage h1, .contactPage h2 {
   margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+@media (max-width: 1048px) {
+  .contactPage h1, .contactPage h2 {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 867px) {
+  .contactPage h1 {
+    font-size: 28px;
+  }
+}
+.contactPage h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+@media (max-width: 867px) {
+  .contactPage h2 {
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
 }
 .contactPage input[type=radio] {
   width: 16px;
@@ -68,7 +117,12 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px solid red;
+}
+@media (max-width: 867px) {
+  .contactPage form {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }
 .contactPage form input, .contactPage form textarea {
   width: 100%;
@@ -98,9 +152,15 @@ textarea {
   background-repeat: no-repeat;
 }
 .contactPage form > div {
-  width: 48%;
+  width: 47%;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 867px) {
+  .contactPage form > div {
+    width: 100%;
+    margin-bottom: 2rem !important;
+  }
 }
 .contactPage form .contactDetails {
   margin-bottom: 4rem;
@@ -112,12 +172,27 @@ textarea {
   width: 100%;
   display: flex;
 }
+@media (max-width: 867px) {
+  .contactPage form .contactDetails ul {
+    flex-direction: column;
+  }
+}
 .contactPage form .contactDetails ul li {
   width: 90%;
   display: flex;
 }
+@media (max-width: 867px) {
+  .contactPage form .contactDetails ul li {
+    width: 100%;
+  }
+}
 .contactPage form .contactDetails ul li #lastname {
   margin-right: 1rem;
+}
+@media (max-width: 867px) {
+  .contactPage form .contactDetails ul li #lastname {
+    margin-right: 0;
+  }
 }
 .contactPage form .contactDetails ul .radioComponent {
   margin-right: 3rem;
@@ -129,14 +204,125 @@ textarea {
   align-content: center;
   margin-bottom: 1rem;
 }
-.contactPage form .visiteAvailability select {
+@media (max-width: 1248px) {
+  .contactPage form .userMessage ul {
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .contactPage form .userMessage ul li:not(li:last-child) {
+    justify-content: flex-start;
+    margin-right: 1rem;
+  }
+  .contactPage form .userMessage ul li {
+    margin-bottom: 0.5rem;
+  }
+}
+.contactPage form .visiteAvailability .selectContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+@media (max-width: 1248px) {
+  .contactPage form .visiteAvailability .selectContainer {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+.contactPage form .visiteAvailability .selectContainer select {
   margin-right: 1rem;
 }
-.contactPage form .visiteAvailability select:first-child {
+@media (max-width: 1248px) {
+  .contactPage form .visiteAvailability .selectContainer select {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 1048px) {
+  .contactPage form .visiteAvailability .selectContainer select {
+    width: 45%;
+  }
+}
+@media (max-width: 867px) {
+  .contactPage form .visiteAvailability .selectContainer select {
+    margin-right: 0.5rem;
+  }
+}
+.contactPage form .visiteAvailability .selectContainer select:first-child {
   width: 160px;
 }
-.contactPage form .visiteAvailability select:has(> option[value=""]:checked) {
+@media (max-width: 1048px) {
+  .contactPage form .visiteAvailability .selectContainer select:first-child {
+    width: 100%;
+  }
+}
+.contactPage form .visiteAvailability .selectContainer select:has(> option[value=""]:checked) {
   color: darkgrey;
+}
+.contactPage form .visiteAvailability .selectContainer .addDispo {
+  padding: 0.75rem 1.5rem;
+  background-color: #721378;
+  color: white;
+  border-radius: 3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.contactPage form .visiteAvailability .selectContainer .addDispo:hover {
+  background-color: white;
+  color: #721378;
+}
+@media (max-width: 1248px) {
+  .contactPage form .visiteAvailability .selectContainer .addDispo {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+.contactPage form .submitContactForm {
+  width: max-content;
+  height: max-content;
+  padding: 0.75rem 7rem;
+  margin: auto 0;
+  background-color: #efb100;
+  color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+@media (max-width: 1248px) {
+  .contactPage form .submitContactForm {
+    padding: 0.75rem 3rem;
+  }
+}
+@media (max-width: 867px) {
+  .contactPage form .submitContactForm {
+    width: 100%;
+    padding: 0.75rem 2rem;
+  }
+}
+
+.userAvailability {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  background-color: lightgrey;
+  color: grey;
+  border-radius: 2rem;
+  font-size: 14px;
+}
+@media (max-width: 867px) {
+  .userAvailability {
+    margin: 0 auto 0.5rem auto;
+  }
+}
+.userAvailability button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userAvailability button img {
+  height: 18px;
+  margin-left: 3rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

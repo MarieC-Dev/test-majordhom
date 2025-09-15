@@ -17,6 +17,14 @@
 body {
     background-color: white;
     color: $black;
+
+    @media (max-width: 1248px) {
+        padding: 0 2rem;
+    }
+
+    @media (max-width: 767px) {
+        padding: 0 .5rem;
+    }
 }
 
 a {
