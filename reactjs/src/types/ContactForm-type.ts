@@ -11,11 +11,11 @@ type MessageForm = {
 
 export type ContactFormType = {
     gender: string,
-    lastName: string,
-    firstName: string,
+    lastname: string,
+    firstname: string,
     email: string,
     phone: string,
 
-    visiteAvailability: VisitAvailability[],
+    visitAvailability: VisitAvailability[],
     messageForm: MessageForm
 }

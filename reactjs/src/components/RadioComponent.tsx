@@ -1,16 +1,17 @@
 type RadioComponentProps = {
     label: string,
-    inputNameAndId: string,
+    inputName: string,
+    inputId: string,
     value: string,
     required: boolean
 }
 
-export default function RadioComponent({ label, inputNameAndId, value, required }: RadioComponentProps) {
+export default function RadioComponent({ label, inputName, inputId, value, required }: RadioComponentProps) {
     return (
         <div className="radioComponent">
             <input type="radio"
-                   name={inputNameAndId}
-                   id={inputNameAndId}
+                   name={inputName}
+                   id={inputId}
                    value={value}
                    required={required} />
             <label htmlFor="">{ label }</label>
