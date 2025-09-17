@@ -30,10 +30,6 @@ function dataReducer(data: any, action: any) {
             return {
                 ...data,
                 [action.field]: action.value,
-                /*messageForm: {
-                    ...data.messageForm,
-                    [action.field]: action.value,
-                },*/
             }
         }
         case 'RESET_DATA': {
@@ -42,10 +38,19 @@ function dataReducer(data: any, action: any) {
         case 'SET_VISIT_FIELD': {
             return {
                 ...data,
-                visitAvailability: [
+                visitAvailability: {
                     ...data.visitAvailability,
-                    { [action.field]: action.value }
-                ]
+                    [action.field]: action.value
+                }
+            }
+        }
+        case 'SET_MESSAGE_FILED': {
+            return {
+                ...data,
+                messageForm: {
+                    ...data.messageForm,
+                    [action.field]: action.value,
+                },
             }
         }
         case 'REMOVE_VISIT_FIELD': {
@@ -77,6 +82,14 @@ export function App() {
         })
     }
 
+    function handleAddMessage( event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> ) {
+        dispatch({
+            type: 'SET_MESSAGE_FILED',
+            field: event.target?.name,
+            value: event.target?.value
+        })
+    }
+
     function handleAddVisit( event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> ) {
         dispatch({
             type: 'SET_VISIT_FIELD',
@@ -84,6 +97,8 @@ export function App() {
             value: event.target?.value
         })
     }
+
+    console.log(data);
 
     return (
         <ContactContext.Provider value={data}>
@@ -99,20 +114,26 @@ export function App() {
                             <ul>
                                 <li>
                                     <RadioComponent label={'Mme'}
-                                                    inputName={'gender'} inputId={'madame'} value={'madame'}
+                                                    inputName={'gender'}
+                                                    inputId={'madame'}
+                                                    value={'madame'}
+                                                    onChange={handleChange}
                                                     required={false}/>
                                     <RadioComponent label={'M'}
-                                                    inputName={'gender'} inputId={'monsieur'} value={'monsieur'}
+                                                    inputName={'gender'}
+                                                    inputId={'monsieur'}
+                                                    value={'monsieur'}
+                                                    onChange={handleChange}
                                                     required={false}/>
                                 </li>
                             </ul>
 
                             <ul>
                                 <li>
-                                    <input type="text" name="lastname" id="lastname" placeholder="Nom"/>
+                                    <input type="text" name="lastname" id="lastname" placeholder="Nom" onChange={handleChange}/>
                                 </li>
                                 <li>
-                                    <input type="text" name="firstname" id="firstname" placeholder="Prénom"/>
+                                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" onChange={handleChange}/>
                                 </li>
                             </ul>
 
@@ -127,25 +148,36 @@ export function App() {
                             <ul>
                                 <li>
                                     <RadioComponent label={'Demande de visite'}
-                                                    inputName={'messageForm.typeRequest'}
+                                                    inputName={'typeRequest'}
                                                     inputId={'visitRequest'}
-                                                    value={'Demande de visite'} required={false}/>
+                                                    value={'Demande de visite'}
+                                                    onChange={handleAddMessage}
+                                                    required={false}/>
                                 </li>
                                 <li>
                                     <RadioComponent label={'Être rappelé.e'}
-                                                    inputName={'messageForm.typeRequest'}
+                                                    inputName={'typeRequest'}
                                                     inputId={'beReminded'}
-                                                    value={'Être rappelé.e'} required={false}/>
+                                                    value={'Être rappelé.e'}
+                                                    onChange={handleAddMessage}
+                                                    required={false}/>
                                 </li>
                                 <li>
                                     <RadioComponent label={'Plus de photos'}
-                                                    inputName={'messageForm.typeRequest'}
+                                                    inputName={'typeRequest'}
                                                     inputId={'morePhotos'}
-                                                    value={'Plus de photos'} required={false}/>
+                                                    value={'Plus de photos'}
+                                                    onChange={handleAddMessage}
+                                                    required={false}/>
                                 </li>
                             </ul>
 
-                            <textarea name="userMessageText" id="" rows={5} placeholder="Votre message"></textarea>
+                            <textarea
+                                name="message"
+                                id="userMessageText" rows={5}
+                                placeholder="Votre message"
+                                onChange={handleAddMessage}
+                            ></textarea>
                         </div>
 
                         {/* Disponibilités pour une visite */}
@@ -153,7 +185,7 @@ export function App() {
                             <h2>Disponibilités pour une visite</h2>
 
                             <div className="selectContainer">
-                                <select name="availabilityDays" id="availabilityDays">
+                                <select name="day" id="availabilityDays" onChange={handleAddVisit}>
                                     <option value="">Ex : Lundi</option>
                                     {
                                         days.map((day: string, index: number) => (
@@ -162,14 +194,14 @@ export function App() {
                                     }
                                 </select>
 
-                                <select name="availabilityHours" id="availabilityHours">
+                                <select name="hours" id="availabilityHours" onChange={handleAddVisit}>
                                     <option value="">8h</option>
                                     {Array.from({length: 11}).map((_, index: number) => (
                                         <option key={index} value={hours + index}>{hours + index}h</option>
                                     ))}
                                 </select>
 
-                                <select name="availabilityMinutes" id="availabilityMinutes">
+                                <select name="minutes" id="availabilityMinutes" onChange={handleAddVisit}>
                                     <option value="">00m</option>
                                     {Array.from({length: 4}, (_, index: number) => {
                                         const minute: number = index * 15;
@@ -184,8 +216,8 @@ export function App() {
                                 <button className="addDispo">Ajouter</button>
                             </div>
 
-                            <UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>
-                            <UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>
+                            {/*<UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>
+                            <UserAvailabilityComponent day={'Lundi'} hours={9} minutes={45}/>*/}
                         </div>
 
                         <button
